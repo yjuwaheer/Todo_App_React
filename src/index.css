@@ -1,13 +1,359 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+*, ::before, ::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* For Start Page */
+.start {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start .titleMain {
+  font-size: 5rem;
+}
+
+.start .about {
+  color: #C2C0BC;
+  padding: 0 50px;
+}
+
+.start .startBut {
+  text-decoration: none;
+  background: #69665C;
+  color: #FFFFFF;
+  margin: 45px;
+  padding: 5px 30px;
+  border-radius: 5px;
+}
+
+.start .startBut:hover {
+  background: #949082;
+}
+
+.start .illustration {
+  width: 350px;
+}
+
+.start .dummy {
+  min-width: 350px;
+  background: #fff7d3;
+  padding: 15px;
+  margin: 0 45px;
+  border-radius: 5px;
+}
+
+.start .dummy .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start .dummy .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start .dummy .head .title {
+  font-size: 1.3rem;
+  text-decoration: line-through;
+}
+
+.start .dummy .description {
+  color: #69665C;
+  text-decoration: line-through;
+  padding: 15px 0;
+}
+
+.start .dummy .foot {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* For Modal */
+.ReactModal__Content {
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  width: 59vw;
+  height: 70vh;
+  padding: 3vw;
+}
+
+.ReactModal__Content .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+
+.ReactModal__Content .buttons .cancel {
+  cursor: pointer;
+  color: #69665C;
+}
+
+.ReactModal__Content .buttons .add {
+  cursor: pointer;
+  color: #FFFFFF;
+  background: #69665C;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+}
+
+.ReactModal__Content .buttons .add:hover {
+  background: #949082;
+}
+
+.ReactModal__Content .title {
+  font-size: 1.5rem;
+  color: #69665C;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+}
+
+.ReactModal__Content .title label {
+  margin-bottom: 3px;
+}
+
+.ReactModal__Content .title input {
+  font-size: 1.1rem;
+  color: #69665C;
+  background: #F9F9F8;
+  padding: 1vh;
+  border: none;
+  border-radius: 5px;
+}
+
+.ReactModal__Content .description {
+  font-size: 1.5rem;
+  color: #69665C;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+
+}
+
+.ReactModal__Content .description label {
+  margin-bottom: 3px;
+}
+
+.ReactModal__Content .description textarea {
+  font-family: 'Noto Sans JP', sans-serif;
+  resize: none;
+  height: 20vh;
+  font-size: 1.1rem;
+  color: #69665C;
+  background: #F9F9F8;
+  padding: 1vh;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+.ReactModal__Content .description textarea::placeholder {
+  position: absolute;
+}
+
+.ReactModal__Content .tagsTitle {
+  font-size: 1.5rem;
+  color: #69665C;
+  display: flex;
+  flex-direction: column;
+}
+
+.ReactModal__Content .tags {
+  display: flex;
+}
+
+.ReactModal__Content .tags div {
+  margin-right: 20px;
+  padding: 3px;
+  display: flex;
+}
+
+.ReactModal__Content .tags .selected {
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.ReactModal__Content .tags div:hover {
+  cursor: pointer;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.ReactModal__Content .tags div span {
+  font-size: 2rem;
+  padding-right: 5px;
+}
+
+.ReactModal__Content .tags div .tagTitle {
+  font-size: 1.2rem;
+}
+
+/* For Home Page */
+.home {
+  padding: 40px 55px;
+}
+
+.home .header {
+  color: #69665C;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.home .header .title {
+  font-size: 2.5rem;
+}
+
+.home .header span {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.home .main {
+  display: flex;
+}
+
+/* For Home Page Left */
+.home .main .left {
+  margin-right: 20px;
+}
+
+.home .main .left .tags .subtag {
+  display: flex;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  padding: 5px 3px;
+}
+
+.home .main .left .tags .subtag:hover {
+  cursor: pointer;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.home .main .left .tags .subtag span {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.home .main .left .hideCompleted {
+  margin: 50px 0;
+  padding: 0 15px;
+  font-size: 1rem;
+  color: #949082;
+}
+
+.home .main .left .hideCompleted input {
+  transform: scale(2);
+  margin-right: 10px;
+}
+
+.home .main .left .illustration {
+  width: 200px;
+}
+
+/* For Home Page Right */
+.home .main .right {
+  width: 70vw;
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(200px, max-content);
+  gap: 40px;
+}
+
+.home .main .right .task {
+  min-width: 350px;
+  max-width: 500px;
+  min-height: 100px;
+  background: #fff7d3;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.home .main .right .task .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home .main .right .task .head span {
+  cursor: pointer;
+}
+
+.home .main .right .task .head .title {
+  font-size: 1.3rem;
+}
+
+.home .main .right .task .description {
+  color: #69665C;
+  padding: 15px 0;
+}
+
+.home .main .right .task .head .title.completed {
+  font-size: 1.3rem;
+  text-decoration: line-through;
+}
+
+.home .main .right .task .description.completed {
+  color: #69665C;
+  text-decoration: line-through;
+  padding: 15px 0;
+}
+
+.home .main .right .task .foot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home .main .right .task .noButtons {
+  display: none;
+}
+
+.home .main .right .task .buttons {
+  position: absolute;
+  right: 15px;
+  top: 35px;
+  background: #FFFFFF;
+  color: #69665C;
+  width: 150px;
+  height: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #69665C;
+}
+
+.home .main .right .task .buttons div {
+  margin: 5px 0;
+}
+
+.home .main .right .task .buttons .divide {
+  padding: none;
+  width: 100%;
+  height: 1px;
+  background: #69665C;
+}
+
+.home .main .right .task .buttons .button {
+  cursor: pointer;
 }
