@@ -1,4 +1,4 @@
-const Right = ({ tasks, setTasks}) => {
+const Right = ({ tasks, setTasks, baseTasks, setBaseTasks }) => {
 
     const showButtons = (divID, e) => {
         e.stopPropagation();
@@ -14,23 +14,27 @@ const Right = ({ tasks, setTasks}) => {
 
     // Update array upon changing checkbox
     const updateCheckbox = (e, id) => {
-        const updatedTasks = [...tasks];
+        const updatedTasks = [...baseTasks];
         updatedTasks.forEach((task) => {
             if (task.id === id) {
                 task.completed = e.target.checked;
             }
         })
 
+        document.querySelector("#hideCompleted").checked = false;
         setTasks(updatedTasks);
+        setBaseTasks(updatedTasks);
         // Update local storage
         localStorage.setItem("ultimateTodoTasks", JSON.stringify([...updatedTasks]));
     };
 
     // Delete the selected task
     const deleteTask = (id) => {
-        const updatedTasks = tasks.filter(task => task.id !== id)
+        const updatedTasks = baseTasks.filter(task => task.id !== id)
 
+        document.querySelector("#hideCompleted").checked = false;
         setTasks(updatedTasks);
+        setBaseTasks(updatedTasks);
         localStorage.setItem("ultimateTodoTasks", JSON.stringify([...updatedTasks]));
     };
 
@@ -59,8 +63,8 @@ const Right = ({ tasks, setTasks}) => {
                                 </div>
                             </div>
                             <div className="noButtons" id={"button" + task.id}>
-                                <div className="edit button">Edit</div>
-                                <div className="divide"></div>
+                                {/* <div className="edit button">Edit</div>
+                                <div className="divide"></div> */}
                                 <div className="delete button" onClick={() => {deleteTask(task.id)}}>Delete</div>
                             </div>
                         </div>

@@ -243,6 +243,12 @@ body {
   padding: 5px 3px;
 }
 
+.home .main .left .tags .subtag.selected {
+  cursor: pointer;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
 .home .main .left .tags .subtag:hover {
   cursor: pointer;
   background: #f7f7f7;
@@ -252,6 +258,10 @@ body {
 .home .main .left .tags .subtag span {
   font-size: 2rem;
   margin-right: 5px;
+}
+
+.home .main .left .tags .subtag .tag {
+  width: 100%;
 }
 
 .home .main .left .hideCompleted {

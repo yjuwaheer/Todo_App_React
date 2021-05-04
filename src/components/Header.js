@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import uuid from "react-uuid";
 
 Modal.setAppElement("#root");
-const Header = ({ tasks, setTasks, copyTasks }) => {
+const Header = ({ tasks, setTasks, baseTasks, setBaseTasks }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
@@ -31,16 +32,19 @@ const Header = ({ tasks, setTasks, copyTasks }) => {
     // Function to add new task
     const addTask = () => {
         let newTask = {
-            id: tasks.length + 1,
+            id: uuid(),
             title: taskTitle,
             description: taskDescription,
             tags: taskTags,
             completed: false
         };
-        setTasks([...tasks, newTask]);
+
+        document.querySelector("#hideCompleted").checked = false;
+        setTasks([...baseTasks, newTask]);
+        setBaseTasks([...baseTasks, newTask]);
 
         // Update local storage
-        localStorage.setItem("ultimateTodoTasks", JSON.stringify([...tasks, newTask]));
+        localStorage.setItem("ultimateTodoTasks", JSON.stringify([...baseTasks, newTask]));
     };
 
     return ( 
