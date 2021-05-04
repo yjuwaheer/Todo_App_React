@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
-const Header = ({ setTasks }) => {
+const Header = ({ tasks, setTasks, copyTasks }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
@@ -30,7 +30,17 @@ const Header = ({ setTasks }) => {
 
     // Function to add new task
     const addTask = () => {
-        console.log(taskTitle, taskDescription)
+        let newTask = {
+            id: tasks.length + 1,
+            title: taskTitle,
+            description: taskDescription,
+            tags: taskTags,
+            completed: false
+        };
+        setTasks([...tasks, newTask]);
+
+        // Update local storage
+        localStorage.setItem("ultimateTodoTasks", JSON.stringify([...tasks, newTask]));
     };
 
     return ( 
@@ -50,7 +60,7 @@ const Header = ({ setTasks }) => {
                 <div className="buttons">
                     <div className="cancel" onClick={() => {setModalOpen(false); resetTask()}}>Cancel</div>
                     <div className="add"
-                        onClick={() => addTask()}
+                        onClick={() => {addTask(); setModalOpen(false); resetTask()}}
                     >
                         Add
                     </div>

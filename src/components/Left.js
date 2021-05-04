@@ -1,4 +1,17 @@
-const Left = () => {
+const Left = ({ tasks, setTasks, copyTasks, setCopyTasks }) => {
+    // Function to toggle the visibility completed tasks
+    const toggleCompletedTasks = (e) => {
+        let visibleTasks = [...tasks];
+        setCopyTasks(tasks);
+
+        if (e.target.checked) {
+            visibleTasks = tasks.filter(task => task.completed !== true);
+            setTasks(visibleTasks);
+        } else {
+            setTasks(copyTasks);
+        }
+    };
+
     return ( 
         <div className="left">
             <div className="tags">
@@ -20,7 +33,7 @@ const Left = () => {
                 </div>
             </div>
             <div className="hideCompleted">
-                <input type="checkbox" name="completed"/>
+                <input type="checkbox" name="completed" defaultChecked={false} onChange={(e) => {toggleCompletedTasks(e)}}/>
                 <label htmlFor="completed">Hide Done Tasks</label>
             </div>
             <img src="./main.png" alt="main" className="illustration"/>

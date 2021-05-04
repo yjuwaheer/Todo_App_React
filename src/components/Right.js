@@ -1,4 +1,5 @@
-const Right = () => {
+const Right = ({ tasks, setTasks}) => {
+
     const showButtons = (divID, e) => {
         e.stopPropagation();
         // Logic to remove all task menu 
@@ -11,146 +12,61 @@ const Right = () => {
         document.getElementById(divID).className = "buttons";
     }
 
+    // Update array upon changing checkbox
+    const updateCheckbox = (e, id) => {
+        const updatedTasks = [...tasks];
+        updatedTasks.forEach((task) => {
+            if (task.id === id) {
+                task.completed = e.target.checked;
+            }
+        })
+
+        setTasks(updatedTasks);
+        // Update local storage
+        localStorage.setItem("ultimateTodoTasks", JSON.stringify([...updatedTasks]));
+    };
+
+    // Delete the selected task
+    const deleteTask = (id) => {
+        const updatedTasks = tasks.filter(task => task.id !== id)
+
+        setTasks(updatedTasks);
+        localStorage.setItem("ultimateTodoTasks", JSON.stringify([...updatedTasks]));
+    };
+
     return ( 
         <div className="right">
-            <div className="task">
-                <div className="head">
-                    <div className="title">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined" onClick={(e) => showButtons("button1", e)}>more_horiz</span>
-                </div>
-                <div className="description">Start using the todo app</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-                <div className="noButtons" id={"button" + 1}>
-                    <div className="edit button">Edit</div>
-                    <div className="divide"></div>
-                    <div className="delete button">Delete</div>
-                </div>
-            </div>
 
-            <div className="task">
-                <div className="head">
-                    <div className="title completed">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined" onClick={(e) => showButtons("button2", e)}>more_horiz</span>
-                </div>
-                <div className="description completed">Start using the todo app
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias cumque perspiciatis, natus obcaecati velit. Possimus illo illum esse vel eligendi, mollitia ab maxime architecto quidem unde iure ipsam atque culpa eos?</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" checked="true" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-                <div className="noButtons" id={"button" + 2}>
-                    <div className="edit button">Edit</div>
-                    <div className="divide"></div>
-                    <div className="delete button">Delete</div>
-                </div>
-            </div>
-
-            <div className="task">
-                <div className="head">
-                    <div className="title">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined">more_horiz</span>
-                </div>
-                <div className="description">Start using the todo app</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="task">
-                <div className="head">
-                    <div className="title">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined">more_horiz</span>
-                </div>
-                <div className="description">Start using the todo app</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="task">
-                <div className="head">
-                    <div className="title">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined">more_horiz</span>
-                </div>
-                <div className="description">Start using the todo app</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="task">
-                <div className="head">
-                    <div className="title completed">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined">more_horiz</span>
-                </div>
-                <div className="description completed">Start using the todo app
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias cumque perspiciatis, natus obcaecati velit. Possimus illo illum esse vel eligendi, mollitia ab maxime architecto quidem unde iure ipsam atque culpa eos?</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" checked="true" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="task">
-                <div className="head">
-                    <div className="title completed">Use todo app</div>
-                    <span className=" material-icons material-icons-outlined">more_horiz</span>
-                </div>
-                <div className="description completed">Start using the todo app
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias cumque perspiciatis, natus obcaecati velit. Possimus illo illum esse vel eligendi, mollitia ab maxime architecto quidem unde iure ipsam atque culpa eos?</div>
-                <div className="foot">
-                    <div className="tags">
-                        <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>
-                        <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="done" checked="true" />
-                        <label htmlFor="done">Done</label>
-                    </div>
-                </div>
-            </div>
+            {
+                (tasks !== []) && tasks.map((task) => {
+                    return (
+                        <div className="task" key={task.id}>
+                            <div className="head">
+                                <div className={task.completed === false ? "title" : "title completed"}>{task.title}</div>
+                                <span className=" material-icons material-icons-outlined" onClick={(e) => showButtons(`button${task.id}`, e)}>more_horiz</span>
+                            </div>
+                            <div className={task.completed === false ? "description" : "description completed"}>{task.description}</div>
+                            <div className="foot">
+                                <div className="tags">
+                                    {task.tags.includes(1) && <span className="material-icons" style={{color: "#D1E5F7"}}>circle</span>}
+                                    {task.tags.includes(2) && <span className="material-icons" style={{color: "#FFCECE"}}>circle</span>}
+                                    {task.tags.includes(3) && <span className="material-icons" style={{color: "#D9F1D5"}}>circle</span>}
+                                    {task.tags.includes(4) && <span className="material-icons" style={{color: "#D2CEFF"}}>circle</span>}
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="done" defaultChecked={task.completed} onChange={(e) => {updateCheckbox(e, task.id)}} />
+                                    <label htmlFor="done">Done</label>
+                                </div>
+                            </div>
+                            <div className="noButtons" id={"button" + task.id}>
+                                <div className="edit button">Edit</div>
+                                <div className="divide"></div>
+                                <div className="delete button" onClick={() => {deleteTask(task.id)}}>Delete</div>
+                            </div>
+                        </div>
+                    );
+                })
+            }
 
         </div>
      );
