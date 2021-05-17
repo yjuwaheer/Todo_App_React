@@ -1,7 +1,7 @@
 # About App
 
 A beautifully designed todo app with local storage capabilities coded in ReactJS. \
-Design from [Behance](https://www.behance.net/gallery/107935847/Todo-List-Desktop-Mobile-app-UI-Design?tracking_source=search_projects_recommended%7Ctodo)
+Design from [Behance](https://www.behance.net/gallery/107935847/Todo-List-Desktop-Mobile-app-UI-Design?tracking_source=search_projects_recommended%7Ctodo) \
 Demo link: [todo_app](https://todo-app-react-kappa.vercel.app/)
 
 ## Tools Used
