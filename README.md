@@ -1,7 +1,7 @@
 # About App
 
 A beautifully designed todo app with local storage capabilities coded in ReactJS. \
-Demo link: [todo_app]()
+Demo link: [todo_app](https://todo-app-react-kappa.vercel.app/)
 
 ## Tools Used
 - HTML
